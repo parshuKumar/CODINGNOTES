@@ -5,11 +5,9 @@ import {MENU_API} from "../utils/constants";
 
 const RestuarantMenu = () => {
 
-
-    
     const [resInfo, setResInfo] = useState(null);
-
-    const {resId} = useParams();
+//this useParam will return the argument in the URL like /restaurant/43444 
+    const {resId} = useParams();  //so above 43444 will be the returned here to resId 
     console.log(resId);
 
     useEffect(() => {
@@ -17,9 +15,8 @@ const RestuarantMenu = () => {
     }, []);
 
     const fetchMenu = async () => {
-        const data = await fetch( MENU_API + resId);
-       
-        const json = await data.json();
+        const data = await fetch( MENU_API + resId); //new API
+        const json = await data.json(); //converting the new API data to json type
 
         console.log(json);
         setResInfo(json.data);
@@ -28,13 +25,9 @@ const RestuarantMenu = () => {
     if(resInfo === null) return <Shimmer />;
 
     const {name, cuisines, costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info;
-
+//below is the item cards of any one thing like here it for RECOMMENDED
     const {itemCards} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-
-    console.log(itemCards);
-
-
-
+     console.log(itemCards);
     return (
         <div className = "menu">
             <h1>{name}</h1>
@@ -53,5 +46,4 @@ const RestuarantMenu = () => {
         </div>
     )
 }
-
 export default RestuarantMenu;
