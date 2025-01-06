@@ -26,7 +26,7 @@ const Body = () => {
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
 
-        const json = await data.json();
+        const json = await data.json(); //to convert the data into json format
         console.log(json);
 
         //optional chaining == ?.(symbol)
@@ -46,17 +46,16 @@ const Body = () => {
             <div className = "filter">
                <div className="search">
                <input type = "text" className = "search-box" 
-               value = {searchText}
-               onChange={
-                (e)=>setSearchText(e.target.value)
-    
-               }
+                   value = {searchText}
+                   onChange={
+                    (e)=>setSearchText(e.target.value)
+                   }
                />
                <button onClick={()=>{
                 //filter the restaurant cards and update the UI
                 //searchText
                 // console.log(searchText);
-
+                //observe we are filtering the data from the listOfRestaurants(ORIGINAL DATA)
                 const filteredRestaurant = listOfRestaurants.filter((res)=>
                      res.info.name.toLowerCase().includes(searchText.toLowerCase())
                 );
@@ -82,31 +81,13 @@ const Body = () => {
                 >Top Rated Restaurants
                  </button>
             </div>
+                        
             <div className = "res-container" >
-                {/*
-                 <RestaurantCard resData = {resList[0]} />
-                <RestaurantCard resData = {resList[1]} />
-                <RestaurantCard resData = {resList[2]} />
-                <RestaurantCard resData = {resList[3]} />
-                <RestaurantCard resData = {resList[4]} />
-                <RestaurantCard resData = {resList[5]} /> 
-                we will make this modular too by using the for loop
-                or we can also do so map filer or reduce;
-                
-                */}
                 {
                     filteredRestaurant.map((restaurant) => (
                     <RestaurantCard key = {restaurant.info.id} resData = {restaurant}/>
                     ))
-
-                    // resList.map((restaurant , index) => (
-                    //     <RestaurantCard key = {index} resData = {restaurant}/>
-                    //     ))
-                    //we can use index but we should not
-                    //even react tell us that we should not use the index as a key
-                    //and always put the key in this rather than not having the key        
-
-
+    
                 }
             </div>
         </div>
