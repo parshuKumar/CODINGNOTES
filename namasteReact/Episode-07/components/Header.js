@@ -2,11 +2,8 @@ import {LOGO_URL} from "../utils/constants";
 import {useState} from "react";
 import { Link } from "react-router";
 
-
 const Header = () => {
-
     // let btnName = "Login"; //we are trying with HTML
-
     //useState variable
     const [btnNameReact, setBtnNameReact] = useState("Login");
 
@@ -37,6 +34,4 @@ const Header = () => {
         </div>
     )
 }
-
-
 export default Header;
