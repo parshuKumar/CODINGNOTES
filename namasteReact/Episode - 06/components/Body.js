@@ -4,10 +4,11 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
 
-    //Local State variable - Super Powerful variable
-    const [listOfRestaurants, setListOfRestaurants] = useState([]);
+    ///KEEPING IT EMPTY TO LOAD THE NULL SO THAT SHIMMER UI CAN SHOW
+    const [listOfRestaurants, setListOfRestaurants] = useState([]); 
+    //THIS WILL CONTAIN THE FILTER DATA FOR THE FILTER BUTTON
     const[filteredRestaurant, setFilteredRestaurant] = useState([]);
-
+    //THIS WILL MAINTAIN THE SEARCH TEXT BASICALLY WILL SHOW TYPED TEXT IN INPUT BOX
     const [searchText, setSearchText] = useState("");
 
     console.log("render")
