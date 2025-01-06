@@ -5,18 +5,14 @@ import {Link } from "react-router";
 
 const Body = () => {
 
-    //Local State variable - Super Powerful variable
+    //ALL BELOW STATE VARIABLES ARE ALREADY DISCUSSED
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-
     const [searchText, setSearchText] = useState("");
 
     console.log("render")
-
-    //use Effect will take two arguments first one is a call back funciton and 
-    //second one will be dependency array
-    //callback fn will be called once the render cycle is finished
-    useEffect(() => {
+    
+    useEffect(() => {  //USE EFFECT VARIABLE TO FETCH THE DATA
         fetchData();
     }, []);
 
@@ -29,22 +25,13 @@ const Body = () => {
         const json = await data.json();
         console.log(json);
 
-        //optional chaining == ?.(symbol)
         setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
-
-    //Conditional Rendering
-    // if(listOfRestaurants.length == 0){
-    //     return < Shimmer />;
-    // }
-
-    //Another way for the above conditional rendering is ternery operator
-
     return listOfRestaurants.length == 0 ? < Shimmer /> : (
-        <div className="body">
-            <div className="filter">
-                <div className="search">
+        <div className="body"> //BODY SECTION STARTING
+            <div className="filter"> //FOR FILTERING
+                <div className="search"> //SEARCH
                     <input type="text" className="search-box"
                         value={searchText}
                         onChange={
@@ -52,24 +39,18 @@ const Body = () => {
 
                         }
                     />
-                    <button onClick={() => {
-                        //filter the restaurant cards and update the UI
-                        //searchText
-                        // console.log(searchText);
-
+                    <button onClick={() => {  //BUTTON TO FILTER/SEARCH
                         const filteredRestaurant = listOfRestaurants.filter((res) =>
                             res.info.name.toLowerCase().includes(searchText.toLowerCase())
                         );
-
                         setFilteredRestaurant(filteredRestaurant);
-
                     }}>Search</button>
 
                 </div>
 
                 {/*Filter to top rated Restaurants */}
-                <button
-                    className="filter-btn"
+                <button 
+                    className="filter-btn"  //FILTER BTN TO FILTER ACCORDING TO THE RATING
 
                     onClick={() => {
                         const filteredList = listOfRestaurants.filter(
@@ -83,35 +64,14 @@ const Body = () => {
                 </button>
             </div>
             <div className="res-container" >
-                {/*
-                 <RestaurantCard resData = {resList[0]} />
-                <RestaurantCard resData = {resList[1]} />
-                <RestaurantCard resData = {resList[2]} />
-                <RestaurantCard resData = {resList[3]} />
-                <RestaurantCard resData = {resList[4]} />
-                <RestaurantCard resData = {resList[5]} /> 
-                we will make this modular too by using the for loop
-                or we can also do so map filer or reduce;
-                
-                */}
-                {
+                {   //Anytime we link to an internal path, we will use <Link> instead of <a href="">.
                     filteredRestaurant.map((restaurant) => (
                        <Link key={restaurant.info.id} to = {"/restaurants/" + restaurant.info.id}> <RestaurantCard  resData={restaurant} />
-                        </Link>
-                    ))
-
-                    // resList.map((restaurant , index) => (
-                    //     <RestaurantCard key = {index} resData = {restaurant}/>
-                    //     ))
-                    //we can use index but we should not
-                    //even react tell us that we should not use the index as a key
-                    //and always put the key in this rather than not having the key        
-
-
+                        </Link> 
+                    )) //the above <link> is provided by the react-router 
                 }
             </div>
         </div>
     )
 }
-
 export default Body;
