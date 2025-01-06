@@ -13,7 +13,7 @@ const AppLayout = () => {
     return (
         <div className = "app">
             <Header />
-            <Outlet />
+            <Outlet /> //The <Outlet> renders the current route selected.
         </div>
     )
 }
