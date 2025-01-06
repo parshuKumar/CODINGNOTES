@@ -1,11 +1,9 @@
 import {LOGO_URL} from "../utils/constants";
 import {useState} from "react";
 
-
 const Header = () => {
-
     // let btnName = "Login"; //we are trying with HTML
-
+    
     //useState variable
     const [btnNameReact, setBtnNameReact] = useState("Login");
 
@@ -13,7 +11,7 @@ const Header = () => {
         <div className = "header">
             <div className = "logo-container">
                 <img className = "logo" src = {LOGO_URL} />
-            </div>
+         </div>
         
         <div className = "nav-items">
             <ul>
@@ -32,6 +30,4 @@ const Header = () => {
         </div>
     )
 }
-
-
 export default Header;
