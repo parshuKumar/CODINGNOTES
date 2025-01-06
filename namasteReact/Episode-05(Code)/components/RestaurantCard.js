@@ -2,13 +2,13 @@ import {CDN_URL} from "../utils/constants"
 
 const RestaurantCard = (props) => {
     const{resData} = props; //destructuring the props (props is react) and destructuring is js
-    
+
+    //Destructuring the resData.info into multiple variables; 
     const {
      cuisines, 
      avgRatingString,
      costForTwo,
      slaParshu = {}} = resData?.info;
-    
     
     return (
          <div className = "res-card" style = {{backgroundColor : "#f0f0f0"}}> 
@@ -24,20 +24,16 @@ const RestaurantCard = (props) => {
             <h4>{resData.info.costForTwo}</h4>
             <h4>{resData.info.sla.deliveryTime} minutes</h4> 
             This is not a good practice to write the code
-            so we have destructuree the code above and now you
+            so we have destructure the code above and now you
             can see the below example; 
             */}
-            
-           
- 
             <h3>{name}</h3>
             <h4>{cuisines.join(", ")}</h4>
             <h4>{avgRatingString} stars</h4>
             <h4>{costForTwo}</h4>
             <h4>{slaParshu.deliveryTime} minutes</h4>
  
- 
-         </div>
+        </div>
      )
  }
 
