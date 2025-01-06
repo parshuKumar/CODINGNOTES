@@ -11,12 +11,14 @@ const Body = () => {
         <div className = "body">
             <div className = "filter">
                 <button className = "filter-btn"
-
+        //Making a filter button in the body section to filter the restaurant 
+        //according to anything like here "rating".
                     onClick={() => {
                         const filteredList = listOfRestaurants.filter(
                             (res) => (res.info.avgRatingString) > 4
                         );
-                   
+        //using the below function to change the listOfRestaurants variable 
+        //that will now contain filteredList after the button is clicked           
                 setListOfRestaurants(filteredList);
                 console.log("Button clicked")
             } } 
