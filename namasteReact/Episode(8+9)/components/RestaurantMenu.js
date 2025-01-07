@@ -4,16 +4,11 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 
 const RestuarantMenu = () => {
-
-
-    
     // const [resInfo, setResInfo] = useState(null);
-
     const {resId} = useParams();
 
-//useRestaurantMenu is our custom hook and we are going to perform the fetching of the data
+    //useRestaurantMenu is our custom hook and we are going to perform the fetching of the data
     const resInfo = useRestaurantMenu(resId);
-
     console.log(resId);
 /*
     useEffect(() => {
@@ -30,14 +25,10 @@ const RestuarantMenu = () => {
     }
 */
     if(resInfo === null) return <Shimmer />;
-
     const {name, cuisines, costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info;
-
     const {itemCards} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
     console.log(itemCards);
-
-
 
     return (
         <div className = "menu">
@@ -57,5 +48,4 @@ const RestuarantMenu = () => {
         </div>
     )
 }
-
 export default RestuarantMenu;
