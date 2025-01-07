@@ -12,8 +12,7 @@ class UserClass extends React.Component{
         };
         console.log(this.props.name + "Child Constructor");
     }
-
-
+    
     async componentDidMount(){
         //console.log(this.props.name + "Child Component Did Mount");
 
@@ -42,9 +41,6 @@ class UserClass extends React.Component{
                 <h4>Contact: @ParshuShah</h4>
             </div>
         );
-
-
     }
 }
-
 export default UserClass;
