@@ -57,9 +57,7 @@ const Body = () => {
                         setFilteredRestaurant(filteredRestaurant);
 
                     }}>Search</button>
-
                 </div>
-
                 {/*Filter to top rated Restaurants */}
                 <button
                     className="filter-btn"
@@ -76,17 +74,14 @@ const Body = () => {
                 </button>
             </div>
             <div className="res-container" >
-
                 {
                     filteredRestaurant.map((restaurant) => (
                        <Link key={restaurant.info.id} to = {"/restaurants/" + restaurant.info.id}> <RestaurantCard  resData={restaurant} />
                         </Link>
                     ))
-
                 }
             </div>
         </div>
     )
 }
-
 export default Body;
