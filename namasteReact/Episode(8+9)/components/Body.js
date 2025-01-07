@@ -31,7 +31,8 @@ const Body = () => {
     
     const onlineStatus = useOnlineStatus();
     if(onlineStatus == false) return <h1>
-        Looks like you are fucking offline, Are you stupid or something, Don't even know how to turn on your Internet!!
+        Looks like you are fucking offline, Are you stupid or 
+        something, Don't even know how to turn on your Internet!!
     </h1>
 
     return listOfRestaurants.length == 0 ? < Shimmer /> : (
